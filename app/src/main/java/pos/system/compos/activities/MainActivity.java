@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
         categoryList = (RecyclerView) findViewById(R.id.rv_categories);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         categoryList.setLayoutManager(layoutManager);
-
-
         CategoryAdapter categoryAdapter = new CategoryAdapter(categories, this);
         categoryList.setAdapter(categoryAdapter);
 

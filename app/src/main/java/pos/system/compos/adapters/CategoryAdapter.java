@@ -28,7 +28,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @NonNull
     @Override
-    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         Context context = parent.getContext();
         int layoutIdForListItem = R.layout.category_item;
 
@@ -52,20 +52,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     class CategoryViewHolder extends RecyclerView.ViewHolder {
 
-        TextView listItemCategoryView;
+        TextView itemCategoryView;
 
         private CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            listItemCategoryView = itemView.findViewById(R.id.tv_category_name);
+            itemCategoryView = itemView.findViewById(R.id.tv_category_name);
 
-            listItemCategoryView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View view) {
                     TextView tv = view.findViewById(R.id.tv_category_name);
                     String categoryName = tv.getText().toString();
-                    int positionIndex = getAdapterPosition();
                     Class destinationActivity = ProductsActivity.class;
                     Intent productsActivityIntent = new Intent(parent, destinationActivity);
                     ArrayList<Product> listProducts = null;
@@ -82,7 +81,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         }
 
         void bind(int indexCategory) {
-            listItemCategoryView.setText(categories.get(indexCategory).getCategoryName());
+            itemCategoryView.setText(categories.get(indexCategory).getCategoryName());
         }
     }
 }
