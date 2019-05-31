@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +14,14 @@ import pos.system.compos.adapters.ProductAdapter;
 
 public class ProductsActivity extends AppCompatActivity {
 
-    private RecyclerView productList;
     List<Product> products;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_activity);
+
+        RecyclerView productList;
+        List<Product> products;
 
         Bundle arguments = getIntent().getExtras();
         products = new ArrayList<>();

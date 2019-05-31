@@ -12,6 +12,7 @@ import java.util.List;
 
 import pos.system.compos.POJO.Product;
 import pos.system.compos.R;
+import pos.system.compos.activities.CheckActivity;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
 
@@ -54,6 +55,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
             tvProductName = itemView.findViewById(R.id.tv_product_name);
             tvProductCost = itemView.findViewById(R.id.tv_product_cost);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    TextView tv = view.findViewById(R.id.tv_product_name);
+                    String productName = tv.getText().toString();
+                    Product targetProduct = null;
+                    for (Product product: products) {
+                        if (product.getName().equals(productName)) {
+                            CheckActivity.addProduct(product);
+                            break;
+                        }
+                    }
+                }
+            });
         }
 
         void bind(int indexProduct) {

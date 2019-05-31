@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Compos</string>
+    <string name="to_pay">Оплатить</string>
+    <string name="to_clear">Очистить</string>
+    <string name="add_product">Добавить товар</string>
 </resources>

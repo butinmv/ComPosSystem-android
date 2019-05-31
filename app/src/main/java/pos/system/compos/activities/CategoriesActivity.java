@@ -19,7 +19,7 @@ import retrofit2.Response;
 
 import pos.system.compos.POJO.Category;
 
-public class MainActivity extends AppCompatActivity {
+public class CategoriesActivity extends AppCompatActivity {
 
     private RecyclerView categoryList;
     List<Category> categories;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(@NonNull Call<List<Category>> call,@NonNull Throwable t) {
-                    Toast.makeText(MainActivity.this, "An error occurred during networking", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CategoriesActivity.this, "An error occurred during networking", Toast.LENGTH_SHORT).show();
                 }
             });
     }

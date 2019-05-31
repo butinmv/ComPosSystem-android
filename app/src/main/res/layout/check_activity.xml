@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_check"
+        android:layout_width="match_parent"
+        android:layout_height="650dp">
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/block_nav"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <Button
+            android:id="@+id/b_pay"
+            android:layout_width="168dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/to_pay"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/b_add_product"
+            android:layout_width="133dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/add_product" />
+
+        <Button
+            android:id="@+id/b_clear"
+            android:layout_width="175dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            android:text="@string/to_clear"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+
+</RelativeLayout>
