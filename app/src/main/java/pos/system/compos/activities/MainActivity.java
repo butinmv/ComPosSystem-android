@@ -1,4 +1,4 @@
-package pos.system.compos;
+package pos.system.compos.activities;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import pos.system.compos.adapters.CategoryAdapter;
+import pos.system.compos.NetworkService;
+import pos.system.compos.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.category_activity);
 
         categories = new ArrayList<>();
 
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         categoryList.setLayoutManager(layoutManager);
 
 
-        CategoryAdapter categoryAdapter = new CategoryAdapter(categories);
+        CategoryAdapter categoryAdapter = new CategoryAdapter(categories, this);
         categoryList.setAdapter(categoryAdapter);
 
             NetworkService.getInstance().getComposApi().getAllCategory().enqueue(new Callback<List<Category>>() {

@@ -3,7 +3,7 @@ package pos.system.compos.POJO;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Category {
     @SerializedName("id")
@@ -16,7 +16,7 @@ public class Category {
 
     @SerializedName("products")
     @Expose
-    private List<Product> listProduct;
+    private ArrayList<Product> listProduct;
 
     public Long getCategoryId() {
         return categoryId;
@@ -34,11 +34,11 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public List<Product> getListProduct() {
+    public ArrayList<Product> getListProduct() {
         return listProduct;
     }
 
-    public void setListProduct(List<Product> listProduct) {
+    public void setListProduct(ArrayList<Product> listProduct) {
         this.listProduct = listProduct;
     }
 }

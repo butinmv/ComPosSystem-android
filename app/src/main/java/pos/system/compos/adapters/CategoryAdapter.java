@@ -1,6 +1,7 @@
-package pos.system.compos;
+package pos.system.compos.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,16 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pos.system.compos.POJO.Category;
+import pos.system.compos.POJO.Product;
+import pos.system.compos.R;
+import pos.system.compos.activities.ProductsActivity;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>{
 
     private List<Category> categories;
-
-    public CategoryAdapter(List<Category> categories) {
+    private Context parent;
+    public CategoryAdapter(List<Category> categories, Context parent) {
         this.categories = categories;
+        this.parent = parent;
     }
 
     @NonNull
@@ -29,8 +35,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(layoutIdForListItem, parent, false);
 
-        CategoryViewHolder categoryViewHolder = new CategoryViewHolder(v);
-        return categoryViewHolder;
+        return new CategoryViewHolder(v);
     }
 
     @Override
@@ -48,12 +53,32 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     class CategoryViewHolder extends RecyclerView.ViewHolder {
 
         TextView listItemCategoryView;
-        TextView viewHolderIndex;
 
-        public CategoryViewHolder(@NonNull View itemView) {
+        private CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
             listItemCategoryView = itemView.findViewById(R.id.tv_category_name);
+
+            listItemCategoryView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    TextView tv = view.findViewById(R.id.tv_category_name);
+                    String categoryName = tv.getText().toString();
+                    int positionIndex = getAdapterPosition();
+                    Class destinationActivity = ProductsActivity.class;
+                    Intent productsActivityIntent = new Intent(parent, destinationActivity);
+                    ArrayList<Product> listProducts = null;
+                    for (Category category: categories) {
+                        if (category.getCategoryName().equals(categoryName)) {
+                            listProducts = category.getListProduct();
+                            break;
+                        }
+                    }
+                    productsActivityIntent.putExtra("products", listProducts);
+                    parent.startActivity(productsActivityIntent);
+                }
+            });
         }
 
         void bind(int indexCategory) {
